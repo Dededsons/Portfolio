@@ -1203,6 +1203,17 @@ html.light .moon-icon { display: block; }
         flex-direction: column;
         text-align: center;
     }
+
+    .project-badge {
+    position: static;
+    display: inline-flex;
+    align-self: flex-start;
+    margin-bottom: 16px;
+}
+
+.project-header h3 {
+    padding-right: 0;
+}
 }
 
 /* Reduced Motion Support */
