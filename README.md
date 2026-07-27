@@ -12,7 +12,7 @@ joao_andre_portfolio/
 ├── js/
 │   └── main.js        # Interatividade (Menu Mobile, Tema, Copiar E-mail, Scroll)
 ├── img/
-│   └── WhatsApp Image 2024-11-13 at 20.46.13.jpeg # Imagem de perfil
+│   └── foto.png # Imagem de perfil
 └── README.md          # Documentação do projeto
 ```
 
