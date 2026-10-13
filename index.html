@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#060913" id="metaThemeColor">
+    
+    <!-- Prevenção de FOUC (Flash of Unstyled Content) no Tema -->
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('theme');
+                var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+                var theme = savedTheme ? savedTheme : (prefersLight ? 'light' : 'dark');
+                document.documentElement.className = theme;
+            } catch (e) {}
+        })();
+    </script>
+
+    <!-- SEO & Metadata -->
+    <title>João André Diniz | Desenvolvedor de Software em Formação</title>
+    <meta name="description" content="Portfólio profissional de João André Diniz - Estudante de ADS (UCB) buscando estágio. Experiência prática em desenvolvimento web, sistemas, processos e dados.">
+    <meta name="keywords" content="João André Diniz, Desenvolvedor de Software, ADS, UCB, Tecnologia, Dados, Sistemas, JavaScript, SQL, Python, Java, HTML, CSS, Brasília">
+    <meta name="author" content="João André Diniz">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dededsons.github.io/">
+
+    <!-- Favicon SVG Embutido (<JA>) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060913'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='26' fill='%2338bdf8'%3E%26lt;JA%26gt;%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://dededsons.github.io/">
+    <meta property="og:title" content="João André Diniz | Desenvolvedor de Software em Formação">
+    <meta property="og:description" content="Profissional de tecnologia em formação com visão analítica, focado em desenvolvimento web, sistemas e dados.">
+    <meta property="og:image" content="https://dededsons.github.io/img/foto.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="João André Diniz | Portfólio Profissional">
+    <meta name="twitter:description" content="Estudante de Análise e Desenvolvimento de Sistemas buscando conectar lógica de negócios, dados e engenharia de software.">
+    <meta name="twitter:image" content="https://dededsons.github.io/img/foto.png">
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet Principal -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Feather Icons CDN (Defer para não bloquear renderização) -->
+    <script src="https://unpkg.com/feather-icons" defer></script>
+    <!-- Main Script (Unificado com i18n e Interações) -->
+    <script src="js/main.js" defer></script>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "João André Diniz",
+      "url": "https://dededsons.github.io/",
+      "jobTitle": "Desenvolvedor de Software em Formação",
+      "almaMater": {
+        "@type": "CollegeOrUniversity",
+        "name": "Universidade Católica de Brasília"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brasília",
+        "addressRegion": "DF",
+        "addressCountry": "BR"
+      },
+      "sameAs": [
+        "https://github.com/Dededsons",
+        "https://www.linkedin.com/in/jo%C3%A3o-cardoso-b63293276/"
+      ],
+      "knowsAbout": ["JavaScript", "Python", "Java", "SQL", "HTML5", "CSS3", "Sistemas ERP", "Análise de Dados", "IA Generativa"]
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" data-i18n="a11y.skipLink">Pular para o conteúdo principal</a>
+
+    <!-- Background Grid & Glow FX -->
+    <div class="bg-grid-pattern" aria-hidden="true"></div>
+    <div class="glow-orb glow-1" aria-hidden="true"></div>
+    <div class="glow-orb glow-2" aria-hidden="true"></div>
+
+    <!-- Header & Navigation -->
+    <header class="navbar-wrapper">
+        <nav class="navbar" aria-label="Navegação Principal" data-i18n-label="a11y.mainNav">
+            <a href="#hero" class="nav-brand" aria-label="Página inicial de João André Diniz" data-i18n-label="a11y.homeLink">
+                <span class="brand-code" aria-hidden="true">&lt;JA&gt;</span>
+                <span class="brand-name">João André</span>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Competências</a></li>
+                <li><a href="#experience" class="nav-link" data-i18n="nav.experience">Trajetória</a></li>
+                <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projetos</a></li>
+                <li><a href="#contact" class="nav-link nav-cta" data-i18n="nav.contact">Contato</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="themeToggle" type="button" class="theme-toggle-btn" aria-label="Alternar tema claro/escuro" title="Alternar tema claro/escuro" data-i18n-label="a11y.themeToggle" data-i18n-title="a11y.themeToggle">
+                    <i data-feather="sun" class="sun-icon" aria-hidden="true"></i>
+                    <i data-feather="moon" class="moon-icon" aria-hidden="true"></i>
+                </button>
+                <button id="langToggle" type="button" class="lang-toggle-btn" aria-label="Mudar para inglês" title="Mudar para inglês" data-i18n-label="toggle.label" data-i18n-title="toggle.label">
+                    <span class="lang-pt active">PT</span><span class="lang-divider" aria-hidden="true">/</span><span class="lang-en">EN</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir Menu" data-i18n-label="a11y.openMenu">
+                    <i data-feather="menu" class="icon-menu" aria-hidden="true"></i>
+                    <i data-feather="x" class="icon-close" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="status-badge">
+                        <span class="pulse-dot" aria-hidden="true"></span>
+                        <span class="badge-text" data-i18n="hero.badge">Aberto a oportunidades de estágio e entrada em tecnologia</span>
+                    </div>
+
+                    <h1 class="hero-title" data-i18n="hero.title">
+                        Desenvolvedor de Software em formação com <span class="gradient-text">visão analítica e foco em soluções reais.</span>
+                    </h1>
+
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">
+                        Graduando em <strong>Análise e Desenvolvimento de Sistemas (UCB)</strong> com experiência prática em rotinas administrativas e de sistemas. Busco aplicar minha visão de negócios e capacidade analítica no desenvolvimento web, dados e tecnologia.
+                    </p>
+
+                    <div class="hero-tags" aria-label="Principais tecnologias">
+                        <span class="tech-tag"><i data-feather="code" aria-hidden="true"></i> Python &amp; Java</span>
+                        <span class="tech-tag"><i data-feather="database" aria-hidden="true"></i> <span data-i18n="hero.tags.data">SQL &amp; Dados</span></span>
+                        <span class="tech-tag"><i data-feather="layout" aria-hidden="true"></i> <span data-i18n="hero.tags.web">Desenvolvimento Web</span></span>
+                        <span class="tech-tag"><i data-feather="cpu" aria-hidden="true"></i> <span data-i18n="hero.tags.systems">Sistemas &amp; Processos</span></span>
+                        <span class="tech-tag"><i data-feather="bar-chart-2" aria-hidden="true"></i> <span data-i18n="hero.tags.ai">IA Generativa</span></span>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <span data-i18n="hero.btnProjects">Explorar Projetos</span>
+                            <i data-feather="arrow-down-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://github.com/Dededsons" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <i data-feather="github" aria-hidden="true"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/jo%C3%A3o-cardoso-b63293276/" target="_blank" rel="noopener noreferrer" class="btn btn-tertiary">
+                            <i data-feather="linkedin" aria-hidden="true"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="Currículo Simplificado João André.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" download="Curriculo-Joao-Andre-Diniz.pdf">
+                            <i data-feather="download" aria-hidden="true"></i>
+                            <span data-i18n="hero.btnResume">Baixar Currículo</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-avatar-card">
+                    <div class="avatar-wrapper">
+                        <img src="img/foto.png" 
+                             alt="Foto de perfil profissional de João André Diniz" 
+                             data-i18n-alt="hero.imgAlt"
+                             width="180"
+                             height="180"
+                             fetchpriority="high"
+                             decoding="async"
+                             class="avatar-img"
+                             onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Joao+Andre&background=0284c7&color=fff&size=256';">
+                    </div>
+                    <div class="avatar-info-box">
+                        <div class="info-row">
+                            <i data-feather="map-pin" class="row-icon" aria-hidden="true"></i>
+                            <span data-i18n="hero.info.location">Brasília, DF — Brasil</span>
+                        </div>
+                        <div class="info-row">
+                            <i data-feather="globe" class="row-icon" aria-hidden="true"></i>
+                            <span data-i18n="hero.info.english">Inglês — Avançado</span>
+                        </div>
+                        <div class="info-row">
+                            <i data-feather="book-open" class="row-icon" aria-hidden="true"></i>
+                            <span data-i18n="hero.info.degree">Análise e Desenvolvimento de Sistemas — UCB</span>
+                        </div>
+                    </div>
+                    <div class="code-motto" aria-label="Lema pessoal em código">
+                        <code><span class="code-kw">if</span> (sucesso == <span class="code-null">null</span>) { <span class="code-fn">tentarNovamente</span>(); }</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre Mim -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle" data-i18n="about.subtitle">Trajetória &amp; Filosofia</span>
+                    <h2 class="section-title" data-i18n="about.title">Sobre João André Diniz</h2>
+                    <div class="title-bar" aria-hidden="true"></div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card main-story">
+                        <h3 data-i18n="about.card1.title"><i data-feather="user-check" aria-hidden="true"></i> Perfil Profissional</h3>
+                        <p data-i18n="about.card1.p1">
+                            Sou um profissional em formação com uma combinação diferenciada de tecnologia, negócios e experiência prática. Minha jornada acadêmica inclui uma passagem pela <strong>Universidade de Brasília (UnB)</strong> e, atualmente, curso <strong>Análise e Desenvolvimento de Sistemas na UCB</strong>.
+                        </p>
+                        <p data-i18n="about.card1.p2">
+                            Possuo vivência profissional em suporte a sistemas corporativos e em rotinas administrativas, o que desenvolveu minha capacidade de entender como a tecnologia impacta processos reais. Tenho me dedicado ao desenvolvimento web, estruturação de dados e criação de projetos práticos, unindo disciplina constante, foco e resiliência para construir minha carreira na área técnica.
+                        </p>
+                    </div>
+
+                    <div class="about-card highlight-box">
+                        <h3 data-i18n="about.card2.title"><i data-feather="zap" aria-hidden="true"></i> Por que o meu perfil se destaca?</h3>
+                        <ul class="highlight-list">
+                            <li>
+                                <div class="list-icon" aria-hidden="true"><i data-feather="layers"></i></div>
+                                <div data-i18n="about.card2.h1_full">
+                                    <strong>Visão Híbrida: Tecnologia + Negócios:</strong> Experiência com processos, sistemas e rotinas administrativas combinada à atual formação estruturada em tecnologia.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list-icon" aria-hidden="true"><i data-feather="message-square"></i></div>
+                                <div data-i18n="about.card2.h2_full">
+                                    <strong>Perfil Analítico e Orientado a Soluções:</strong> Capacidade de analisar problemas, compreender regras de negócio e buscar soluções de forma lógica e organizada.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="list-icon" aria-hidden="true"><i data-feather="target"></i></div>
+                                <div data-i18n="about.card2.h3_full">
+                                    <strong>Disciplina, Resiliência e Evolução Contínua:</strong> Mentalidade orientada ao aperfeiçoamento diário em desenvolvimento web, dados e inteligência artificial, com rápida adaptação a novos desafios.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Competências -->
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle" data-i18n="skills.subtitle">Stack Técnica &amp; Metodologias</span>
+                    <h2 class="section-title" data-i18n="skills.title">Competências Profissionais</h2>
+                    <div class="title-bar" aria-hidden="true"></div>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Card 1: Frontend & Software -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon" aria-hidden="true"><i data-feather="layout"></i></div>
+                            <h3 data-i18n="skills.c1.title">Desenvolvimento de Software</h3>
+                        </div>
+                        <p class="category-desc" data-i18n="skills.c1.desc">Estudo e aplicação prática em programação, construção de projetos web e versionamento de código.</p>
+                        <div class="skills-tags">
+                            <span class="badge">Python &amp; Java</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">HTML5 &amp; CSS3</span>
+                            <span class="badge" data-i18n="skills.c1.t1">Desenvolvimento Web</span>
+                            <span class="badge" data-i18n="skills.c1.t2">Integração de APIs</span>
+                            <span class="badge">Git / GitHub</span>
+                            <span class="badge" data-i18n="skills.c1.t3">UI/UX Básico</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Dados & Banco de Dados -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon" aria-hidden="true"><i data-feather="database"></i></div>
+                            <h3 data-i18n="skills.c2.title">Dados &amp; Bancos de Dados</h3>
+                        </div>
+                        <p class="category-desc" data-i18n="skills.c2.desc">Conhecimento em estruturação de consultas, modelagem de informações e análise visual de dados.</p>
+                        <div class="skills-tags">
+                            <span class="badge">SQL</span>
+                            <span class="badge" data-i18n="skills.c2.t1">Modelagem de Dados</span>
+                            <span class="badge" data-i18n="skills.c2.t2">Banco de Dados</span>
+                            <span class="badge" data-i18n="skills.c2.t3">Análise de Dados</span>
+                            <span class="badge" data-i18n="skills.c2.t4">Excel Avançado</span>
+                            <span class="badge" data-i18n="skills.c2.t5">Análise de Métricas</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: ERP & Processos -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon" aria-hidden="true"><i data-feather="cpu"></i></div>
+                            <h3 data-i18n="skills.c3.title">Sistemas &amp; Processos</h3>
+                        </div>
+                        <p class="category-desc" data-i18n="skills.c3.desc">Familiaridade com fluxos operacionais, suporte a usuários e análise de rotinas administrativas.</p>
+                        <div class="skills-tags">
+                            <span class="badge" data-i18n="skills.c3.t1">Sistemas ERP</span>
+                            <span class="badge" data-i18n="skills.c3.t2">Suporte a Sistemas</span>
+                            <span class="badge" data-i18n="skills.c3.t3">Processos Administrativos</span>
+                            <span class="badge" data-i18n="skills.c3.t4">Controladoria</span>
+                            <span class="badge" data-i18n="skills.c3.t5">Análise de Processos</span>
+                            <span class="badge" data-i18n="skills.c3.t6">Regras de Negócio</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Soft Skills & Práticas -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <div class="category-icon" aria-hidden="true"><i data-feather="shield"></i></div>
+                            <h3 data-i18n="skills.c4.title">Tecnologias Emergentes &amp; Práticas</h3>
+                        </div>
+                        <p class="category-desc" data-i18n="skills.c4.desc">Competências voltadas para a evolução tecnológica, adaptação a novos cenários e comunicação técnica.</p>
+                        <div class="skills-tags">
+                            <span class="badge" data-i18n="skills.c4.t1">IA Generativa</span>
+                            <span class="badge" data-i18n="skills.c4.t2">Engenharia de Prompt</span>
+                            <span class="badge">OpenAI API</span>
+                            <span class="badge" data-i18n="skills.c4.t3">Pensamento Analítico</span>
+                            <span class="badge" data-i18n="skills.c4.t4">Aprendizado Contínuo</span>
+                            <span class="badge highlight-badge" data-i18n="skills.c4.t5">Inglês — Avançado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Experiência / Trajetória -->
+        <section id="experience" class="section experience-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle" data-i18n="exp.subtitle">Histórico de Atuação</span>
+                    <h2 class="section-title" data-i18n="exp.title">Experiência Profissional &amp; Formação</h2>
+                    <div class="title-bar" aria-hidden="true"></div>
+                </div>
+
+                <div class="timeline">
+                    <!-- Item 1: Suporte e Processos -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"><i data-feather="briefcase"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="role-title" data-i18n="exp.i1.title">Suporte a Sistemas e Rotinas Administrativas</h3>
+                                    <span class="company-name" data-i18n="exp.i1.company">Experiências Profissionais</span>
+                                </div>
+                                <span class="timeline-period" data-i18n="exp.i1.period">Vivência Prática</span>
+                            </div>
+                            <p class="timeline-text" data-i18n="exp.i1.text">
+                                Experiência com rotinas operacionais, validação de informações em sistemas de gestão (ERP) e processos de controladoria, mantendo contato contínuo com áreas internas e garantindo o fluxo das operações.
+                            </p>
+                            <ul class="timeline-highlights">
+                                <li data-i18n="exp.i1.b1">Atendimento e suporte relacionado ao ambiente corporativo e ao sistema de gestão.</li>
+                                <li data-i18n="exp.i1.b2">Validação de informações e acompanhamento de rotinas administrativas.</li>
+                                <li data-i18n="exp.i1.b3">Análise de processos operacionais com foco na consistência dos dados internos.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Projetos -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"><i data-feather="code"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="role-title" data-i18n="exp.i2.title">Desenvolvimento Web e Projetos Independentes</h3>
+                                    <span class="company-name" data-i18n="exp.i2.company">Projetos Práticos</span>
+                                </div>
+                                <span class="timeline-period" data-i18n="exp.i2.period">Atuação Contínua</span>
+                            </div>
+                            <p class="timeline-text" data-i18n="exp.i2.text">
+                                Estudo aplicado e desenvolvimento de projetos, construindo interfaces web funcionais e responsivas para consolidar conhecimentos técnicos na prática.
+                            </p>
+                            <ul class="timeline-highlights">
+                                <li data-i18n="exp.i2.b1">Criação de websites e páginas web com estruturação semântica em HTML.</li>
+                                <li data-i18n="exp.i2.b2">Desenvolvimento de interfaces e estilização de layouts com CSS e foco em responsividade.</li>
+                                <li data-i18n="exp.i2.b3">Aplicação de JavaScript para interatividade e organização de código em projetos práticos.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Formação UCB -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"><i data-feather="book"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="role-title" data-i18n="exp.i3.title">Graduação em Análise e Desenvolvimento de Sistemas</h3>
+                                    <span class="company-name">Universidade Católica de Brasília (UCB)</span>
+                                </div>
+                                <span class="timeline-period" data-i18n="exp.i3.period">Em Andamento</span>
+                            </div>
+                            <p class="timeline-text" data-i18n="exp.i3.text">
+                                Formação focada em base de sistemas, desenvolvimento de software, lógica de programação, banco de dados e engenharia de requisitos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Certificações em Tecnologia e IA -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker" aria-hidden="true"><i data-feather="award"></i></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="role-title" data-i18n="exp.i4.title">Certificações em Tecnologia e IA</h3>
+                                    <span class="company-name" data-i18n="exp.i4.company">Aprendizado Contínuo</span>
+                                </div>
+                                <span class="timeline-period" data-i18n="exp.i4.period">Formação Complementar</span>
+                            </div>
+                            <p class="timeline-text" data-i18n="exp.i4.text">
+                                Formação complementar por meio de certificações em Inteligência Artificial, IA Generativa, Engenharia de Prompt, Desenvolvimento Web e Ciência de Dados, reforçando minha evolução técnica e mantendo meus conhecimentos alinhados às tecnologias e boas práticas mais atuais do mercado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Projetos -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle" data-i18n="projects.subtitle">Portfólio Prático</span>
+                    <h2 class="section-title" data-i18n="projects.title">Projetos em Destaque</h2>
+                    <div class="title-bar" aria-hidden="true"></div>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Projeto 1: Featured -->
+                    <article class="project-card featured-project">
+                        <div class="project-badge" data-i18n="projects.badge">Projeto em Destaque</div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>Fio Mestre - Sistema de Gestão</h3>
+                                <div class="project-techs">
+                                    <span>Python</span>
+                                    <span>SQL</span>
+                                    <span data-i18n="projects.p1.t1">Banco de Dados</span>
+                                    <span data-i18n="projects.p1.t2">Gestão de Estoque</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="projects.p1.problem"><strong>Problema:</strong> Necessidade de organizar e gerenciar pedidos, clientes e produção de uma camiseteria real.<br></span>
+                                <span data-i18n="projects.p1.solution"><strong>Solução:</strong> Desenvolvimento de um sistema focado na modelagem de banco de dados e gestão das regras de negócio, facilitando o controle de estoque, o fluxo de clientes e o acompanhamento logístico.</span>
+                            </p>
+                            <div class="project-footer">
+                                <span class="project-role" data-i18n="projects.p1.role"><i data-feather="user" aria-hidden="true"></i> Papel: Desenvolvedor em Formação</span>
+                                <div class="project-links">
+                                    <a href="https://github.com/Dededsons" target="_blank" rel="noopener noreferrer" class="project-btn" aria-label="Ver código do projeto no GitHub" data-i18n-label="projects.p1.btnAria">
+                                        <i data-feather="github" aria-hidden="true"></i> <span data-i18n="projects.p1.btn">Ver Perfil no GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projeto 2: Landing Pages -->
+                    <article class="project-card">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3 data-i18n="projects.p2.title">Look Fino Ternos - Desenvolvimento Web</h3>
+                                <div class="project-techs">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span data-i18n="projects.p2.t1">Responsividade</span>
+                                    <span data-i18n="projects.p2.t2">Interface</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="projects.p2.obj"><strong>Objetivo:</strong> Construir a presença digital estruturada para uma loja de Ternos.<br></span>
+                                <span data-i18n="projects.p2.sol"><strong>Solução:</strong> Desenvolvimento de um website multipáginas focado na correta hierarquia da informação, navegação funcional e implementação de layout totalmente responsivo para dispositivos móveis.</span>
+                            </p>
+                            <div class="project-footer">
+                                <span class="project-role" data-i18n="projects.p2.role"><i data-feather="user" aria-hidden="true"></i> Papel: Desenvolvedor Full-Stack</span>
+                                <div class="project-links">
+                                    <a href="https://lookfinoternos.com/" target="_blank" rel="noopener noreferrer" class="project-btn">
+                                        <i data-feather="globe" aria-hidden="true"></i> <span data-i18n="projects.p2.btn">Visitar Site</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projeto 3: Qualidade de Software -->
+                    <article class="project-card">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3 data-i18n="projects.p3.title">Avaliação de Qualidade de Software</h3>
+                                <div class="project-techs">
+                                    <span data-i18n="projects.p3.t1">Engenharia de Software</span>
+                                    <span>ISO/IEC 25010</span>
+                                    <span>CMMI</span>
+                                    <span data-i18n="projects.p3.t2">Maturidade</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                <span data-i18n="projects.p3.obj"><strong>Objetivo:</strong> Analisar a maturidade de processos e a qualidade de sistemas de acordo com padrões rigorosos.<br></span>
+                                <span data-i18n="projects.p3.sol"><strong>Solução:</strong> Elaboração de um projeto acadêmico realizando a análise crítica estruturada de um sistema universitário, aplicando as normas internacionais ISO/IEC 25010 e métricas baseadas no modelo CMMI.</span>
+                            </p>
+                            <div class="project-footer">
+                                <span class="project-role" data-i18n="projects.p3.role"><i data-feather="user" aria-hidden="true"></i> Papel: Estudante de Análise de Sistemas</span>
+                                <div class="project-links">
+                                    <a href="https://github.com/Dededsons" target="_blank" rel="noopener noreferrer" class="project-btn">
+                                        <i data-feather="github" aria-hidden="true"></i> <span data-i18n="projects.p3.btn">Ver Perfil no GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="contact-box">
+                    <div class="contact-header">
+                        <span class="section-subtitle" data-i18n="contact.subtitle">Vamos conversar?</span>
+                        <h2 data-i18n="contact.title">Pronto para somar à sua equipe.</h2>
+                        <p data-i18n="contact.text">Estou aberto a oportunidades de estágio e posições de entrada em tecnologia, desenvolvimento, dados, sistemas e suporte. Vamos construir algo relevante juntos?</p>
+                    </div>
+
+                    <div class="contact-methods">
+                        <div class="contact-card">
+                            <div class="card-icon" aria-hidden="true"><i data-feather="mail"></i></div>
+                            <div class="card-info">
+                                <span class="label" data-i18n="contact.emailLabel">E-mail de Contato</span>
+                                <a href="mailto:jandredcardoso@gmail.com" class="value email-link" id="emailText">jandredcardoso@gmail.com</a>
+                            </div>
+                            <button type="button" class="copy-btn" id="copyEmailBtn" aria-label="Copiar endereço de e-mail" data-i18n-label="contact.copyAria">
+                                <i data-feather="copy" class="copy-icon" aria-hidden="true"></i>
+                                <span id="copyFeedback" aria-live="polite" data-i18n="contact.copyBtn">Copiar</span>
+                            </button>
+                        </div>
+
+                        <div class="contact-links-grid">
+                            <a href="https://wa.me/5561996107932" target="_blank" rel="noopener noreferrer" class="social-contact-btn">
+                                <i data-feather="phone" aria-hidden="true"></i>
+                                <div>
+                                    <strong data-i18n="contact.phone">Telefone / WhatsApp</strong>
+                                    <span>+55 (61) 99610-7932</span>
+                                </div>
+                                <i data-feather="arrow-up-right" class="arrow" aria-hidden="true"></i>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/jo%C3%A3o-cardoso-b63293276/" target="_blank" rel="noopener noreferrer" class="social-contact-btn">
+                                <i data-feather="linkedin" aria-hidden="true"></i>
+                                <div>
+                                    <strong>LinkedIn</strong>
+                                    <span>João André Diniz</span>
+                                </div>
+                                <i data-feather="arrow-up-right" class="arrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-code" aria-hidden="true">&lt;JA&gt;</span>
+                <span>João André Diniz</span>
+                <span class="system-status">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span data-i18n="footer.status">TECH • DATA • SYSTEMS</span>
+                </span>
+            </div>
+            <p class="footer-copy">
+                &copy; <span id="currentYear">2026</span> <span data-i18n="footer.copy">João André Diniz. Desenvolvido com HTML5, CSS3 e JavaScript puro.</span>
+            </p>
+            <div class="footer-links">
+                <a href="#hero" class="back-top-link"><span data-i18n="footer.backTop">Voltar ao Topo</span> <i data-feather="arrow-up" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
